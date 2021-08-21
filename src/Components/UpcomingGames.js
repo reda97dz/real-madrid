@@ -1,7 +1,7 @@
 import React from 'react'
 import Fixture from './Fixture'
 
-const Games = ({gamesList}) => {
+const UpcomingGames = ({gamesList}) => {
     return (
       <div>
         <table>
@@ -13,4 +13,4 @@ const Games = ({gamesList}) => {
     )
 }
 
-export default Games
+export default UpcomingGames
