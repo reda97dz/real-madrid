@@ -3,21 +3,20 @@ import UpcomingGames from './Components/UpcomingGames'
 import FinishedGames from './Components/FinishedGames'
 import gameService from './Services/games'
 
-
 const App = () => {
   const [upcomingGamesList, setUpcomingGamesList] = useState([])
   const [finishedGamesList, setFinishedGamesList] = useState([])
   const [numberOfGamesToShow, setNumberOfGamesToShow] = useState(5)
-  
+
   const hook = () => {
     gameService.upcomingGames().then(games => setUpcomingGamesList(games))
     gameService.finishedGames().then(games => setFinishedGamesList(games))
   }
-
   useEffect(hook, [])
 
   return (
     <div>
+      
       <FinishedGames gamesList={finishedGamesList} />
 
       <UpcomingGames gamesList={upcomingGamesList.slice(0,numberOfGamesToShow)} />
