@@ -2,15 +2,12 @@ import React from 'react'
 
 const Fixture = ({match}) => {
     return(
-      <tr>
-        <td> {match.homeTeam.name} </td>
-        <td> - </td>
-        <td> {match.awayTeam.name} </td>
-        <td> - </td>
-        <td> {match.utcDate} </td>
-        <td> - </td>
-        <td> {match.competition.name} </td>
-      </tr>
+      <div className='container'>
+        {match.homeTeam.name} -
+        {match.awayTeam.name} -
+        {match.utcDate} -
+        {match.competition.name}
+      </div>
     )
 }
 

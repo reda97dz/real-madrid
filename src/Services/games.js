@@ -12,4 +12,6 @@ const finishedGames = () => {
     return request.then(response => response.data.matches)
 }
 
-export default {upcomingGames, finishedGames}
+const gameService = {upcomingGames, finishedGames}
+
+export default gameService

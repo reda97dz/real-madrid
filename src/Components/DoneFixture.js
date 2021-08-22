@@ -1,14 +1,14 @@
 import React from 'react'
+import styled from 'styled-components'
 
 const DoneFixture = ({match}) => {
     return(
-    <tr>
-        <td>{match.homeTeam.name}</td>
-        <td>{match.score.fullTime.homeTeam}</td>
-        <td>-</td>
-        <td>{match.score.fullTime.awayTeam}</td>
-        <td>{match.awayTeam.name}</td>
-    </tr>
+        <div>
+            {match.homeTeam.name}
+            {match.score.fullTime.homeTeam} -
+            {match.score.fullTime.awayTeam}
+            {match.awayTeam.name}
+        </div>
     )
 }
 

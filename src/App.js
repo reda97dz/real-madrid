@@ -4,7 +4,6 @@ import FinishedGames from './Components/FinishedGames'
 import gameService from './Services/games'
 
 
-
 const App = () => {
   const [upcomingGamesList, setUpcomingGamesList] = useState([])
   const [finishedGamesList, setFinishedGamesList] = useState([])
@@ -19,12 +18,8 @@ const App = () => {
 
   return (
     <div>
-      <h1>Finished games</h1>
-
       <FinishedGames gamesList={finishedGamesList} />
 
-      <h1>Upcoming games</h1>
-      
       <UpcomingGames gamesList={upcomingGamesList.slice(0,numberOfGamesToShow)} />
 
       <button onClick={()=>{setNumberOfGamesToShow(numberOfGamesToShow+5)}}>
