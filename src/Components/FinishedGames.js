@@ -1,14 +1,14 @@
 import React from 'react'
 import DoneFixture from './DoneFixture'
+import Paper from '@material-ui/core/Paper'
 
 const FinishedGames = ({gamesList}) => {
+    console.log(gamesList[0])
     return (
-        <div className='card'>
-            <div>
-                <h1>Finished Games</h1>
-            </div>
+        <Paper elevation={3}>
+            <h1>Finished Games</h1>
             {gamesList.map(match => <DoneFixture key={match.id} match={match} />)}
-        </div>
+        </Paper>
     )
 }
 

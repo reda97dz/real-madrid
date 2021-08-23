@@ -3,6 +3,9 @@ import UpcomingGames from './Components/UpcomingGames'
 import FinishedGames from './Components/FinishedGames'
 import gameService from './Services/games'
 
+import Button from '@material-ui/core/Button'
+import Container from '@material-ui/core/Container'
+
 const App = () => {
   const [upcomingGamesList, setUpcomingGamesList] = useState([])
   const [finishedGamesList, setFinishedGamesList] = useState([])
@@ -15,17 +18,19 @@ const App = () => {
   useEffect(hook, [])
 
   return (
-    <div>
+    <Container>
       
       <FinishedGames gamesList={finishedGamesList} />
 
       <UpcomingGames gamesList={upcomingGamesList.slice(0,numberOfGamesToShow)} />
 
-      <button onClick={()=>{setNumberOfGamesToShow(numberOfGamesToShow+5)}}>
+
+      <Button onClick={()=>{setNumberOfGamesToShow(numberOfGamesToShow+5)}}>
         Show more
-      </button>
-      <button onClick={()=>{setNumberOfGamesToShow(5)}}>Reset List</button>
-    </div>
+      </Button>
+      <Button onClick={()=>{setNumberOfGamesToShow(5)}}>Reset List</Button>
+
+    </Container>
   )
 }
 
