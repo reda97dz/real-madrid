@@ -5,8 +5,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Divider from '@material-ui/core/Divider'
-import Typography from '@material-ui/core/Typography'
-import ButtonBase from '@material-ui/core/ButtonBase'
+// import Typography from '@material-ui/core/Typography'
+// import ButtonBase from '@material-ui/core/ButtonBase'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 const DoneFixture = ({match}) => {
-    const classes = useStyles();
+    console.log(match)
+    const classes = useStyles()
     const [homeTeam, setHomeTeam] = useState({})
     const [awayTeam, setAwayTeam] = useState({})
 
