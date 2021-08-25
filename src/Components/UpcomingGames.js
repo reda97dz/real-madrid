@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
 import Fixture from './Fixture'
 import Paper from '@material-ui/core/Paper'
+import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
-import { Box, CardActions } from '@material-ui/core'
-
+import { Box } from '@material-ui/core'
+import IconButton from '@material-ui/core/IconButton'
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -13,32 +15,59 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: 15,
   },
+  titlePaper: {
+    backgroundColor: '#16150f80'
+  },
+  listPaper: {
+    backgroundColor : '#f0e1c51A'
+  }
 }));
 
 const UpcomingGames = ({gamesList}) => {
   const classes = useStyles()
-  const [numberOfGamesToShow, setNumberOfGamesToShow] = useState(2)
+  const [numberOfGamesToShow, setNumberOfGamesToShow] = useState(5)
 
     return (
-      <Paper  className={classes.paper} elevation={3} square>
-        
-        <Typography variant="h2" component="h2" gutterBottom align='center'>
-          Upcoming Games
-        </Typography>
-        <Typography variant="subtitle1" gutterBottom>
-          Real Madrid Next Fixtures
-        </Typography>
-        {gamesList.slice(0, numberOfGamesToShow).map(match => <Fixture key={match.id} match={match} />)}
-        
-        <Box textAlign='center'>
-          <Button onClick={()=>{setNumberOfGamesToShow(numberOfGamesToShow+1)}} >
-            Show more
-          </Button>
-          <Button onClick={()=>{setNumberOfGamesToShow(2)}}>
-            Reset List
-          </Button>
-        </Box>
-      </Paper>
+      <Grid align='center'>
+        <Box width={1/2} p={2}>
+          <Paper  className={classes.paper} square >
+            
+            {/* <Box bgcolor='primary.main' color='white'>
+              <Typography variant="h3" component="h2" gutterBottom align='center'>
+                  Upcoming Games
+              </Typography>
+            </Box> */}
+
+            <Paper className={classes.titlePaper} elevation={1} square>
+              <Box p={2} color='#f0e1c5'>
+                <Typography variant="h3" component="h2">
+                    Real Madrid
+                </Typography>
+              </Box>
+            </Paper>
+
+            <Box align='center' m={1} color="#f2d59d">
+              <Typography  gutterBottom>
+                Real Madrid Next Fixtures
+              </Typography>
+            </Box>
+
+            <Box>
+              <Paper className={classes.listPaper} elevation={1} square>
+                {gamesList.slice(0, numberOfGamesToShow).map(match => <Fixture key={match.id} match={match} />)}
+              </Paper>
+            </Box>
+            <Box textAlign='center'>
+              <IconButton aria-label="show more" onClick={()=>{setNumberOfGamesToShow(numberOfGamesToShow+5)}} >
+                <KeyboardArrowDownIcon fontSize="inherit" />
+              </IconButton>
+              <IconButton aria-label="show less" onClick={()=>{setNumberOfGamesToShow(5)}} >
+                <KeyboardArrowUpIcon fontSize="inherit" />
+              </IconButton>
+            </Box>
+          </Paper>
+          </Box>
+      </Grid>
     )
 }
 
