@@ -1,26 +1,23 @@
 import React, {useState, useEffect} from 'react'
-import UpcomingGames from './Components/UpcomingGames'
-// import FinishedGames from './Components/FinishedGames'
+import Games from './Components/Games'
 import gameService from './Services/games'
 
 import Container from '@material-ui/core/Container'
 
-const App = ({upcomingGames, finishedGames}) => {
-  const [upcomingGamesList, setUpcomingGamesList] = useState(upcomingGames)
-  // const [finishedGamesList, setFinishedGamesList] = useState(finishedGames)
+const App = () => {
+  const [upcomingGamesList, setUpcomingGamesList] = useState([])
+  const [finishedGamesList, setFinishedGamesList] = useState([])
 
   const hook = () => {
     gameService.upcomingGames().then(games => setUpcomingGamesList(games))
-    // gameService.finishedGames().then(games => setFinishedGamesList(games))
+    gameService.finishedGames().then(games => setFinishedGamesList(games))
   }
   useEffect(hook, [])
 
   return (
     <Container>
       
-      {/* <FinishedGames gamesList={finishedGamesList} /> */}
-
-      <UpcomingGames gamesList={upcomingGamesList} />
+      <Games upcomingGamesList={upcomingGamesList} finishedGamesList={finishedGamesList} />
 
     </Container>
   )

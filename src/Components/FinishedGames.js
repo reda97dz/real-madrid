@@ -1,6 +1,8 @@
 import React from 'react'
 import DoneFixture from './DoneFixture'
 import Paper from '@material-ui/core/Paper'
+import Divider from '@material-ui/core/Divider'
+import { Box } from '@material-ui/core'
 
 const FinishedGames = ({gamesList}) => {
     console.log(gamesList[0])

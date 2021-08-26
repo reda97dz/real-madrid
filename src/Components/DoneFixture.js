@@ -1,42 +1,13 @@
-import React, {useEffect, useState} from 'react'
-import gameService from '../Services/games'
-
-import { makeStyles } from '@material-ui/core/styles'
+import React, {useState} from 'react'
 import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper'
+import { Box } from '@material-ui/core'
 import Divider from '@material-ui/core/Divider'
-// import Typography from '@material-ui/core/Typography'
-// import ButtonBase from '@material-ui/core/ButtonBase'
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      margin: 5,
-    },
-  }));
-
 
 const DoneFixture = ({match}) => {
-    console.log(match)
-    const classes = useStyles()
-    const [homeTeam, setHomeTeam] = useState({})
-    const [awayTeam, setAwayTeam] = useState({})
-
-    useEffect(() => {
-        gameService.teamDetails(match.homeTeam.id).then(team => {
-            setHomeTeam(team)
-        })
-        gameService.teamDetails(match.awayTeam.id).then(team => {
-            setAwayTeam(team)
-        })
-    }, [])
 
     return(
-        <Paper elevation={0} square>
+        <Box p={2}>
+            {/* <Paper elevation={0} square>
             <Grid container align="center" alignItems="center">
                 <Grid item xs align='center'>
                     <img src={homeTeam.crestUrl} className='crest' alt="crest" />
@@ -47,6 +18,7 @@ const DoneFixture = ({match}) => {
                 <Grid item xs>
                     {match.score.fullTime.homeTeam}
                 </Grid>
+                -
                 <Grid item xs>
                     {match.score.fullTime.awayTeam}
                 </Grid>
@@ -58,7 +30,43 @@ const DoneFixture = ({match}) => {
                 </Grid>
             </Grid>
             <Divider />
-        </Paper>
+            </Paper> */}
+            <Grid container>
+                <Grid items xs={2} align='left'>
+                    <Box fontWeight='fontWeightRegular' fontSize={12}>
+                        {match.competition.name}
+                    </Box>
+                </Grid>
+                <Grid item xs container direction='row'>
+                    <Grid item xs  container direction='row' alignItems='center'>
+                        <Grid item xs align='right'>
+                            <Box fontWeight="fontWeightMedium">
+                            {match.homeTeam.name}
+                            </Box>
+                        </Grid>
+                        <Grid item xs={1} align='center'>
+                            {match.score.fullTime.homeTeam}
+                        </Grid>
+                        -
+                        <Grid item xs={1} align='center'>
+                            {match.score.fullTime.awayTeam}
+                        </Grid>
+                        <Grid item xs align='left'>
+                            <Box fontWeight="fontWeightMedium">
+                            {match.awayTeam.name}
+                            </Box>
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={2} align='center'>
+                        <Box fontWeight='fontWeightLight'>
+                            FT
+                        </Box>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Divider />
+        </Box>
+        
     )
 }
 

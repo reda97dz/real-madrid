@@ -576,4 +576,4 @@ const upcomingGames = [
     }
 ]
 
-ReactDOM.render(<App upcomingGames={upcomingGames} finishedGames={finishedGames} />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'))
