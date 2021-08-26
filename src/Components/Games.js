@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Games = ({upcomingGamesList, finishedGamesList}) => {
   const classes = useStyles()
-  const [numberOfGamesToShow, setNumberOfGamesToShow] = useState(10)
+  const [numberOfGamesToShow, setNumberOfGamesToShow] = useState(5)
   console.log(finishedGamesList)
 
   return (
