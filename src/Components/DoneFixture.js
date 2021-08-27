@@ -7,30 +7,6 @@ const DoneFixture = ({match}) => {
 
     return(
         <Box p={2}>
-            {/* <Paper elevation={0} square>
-            <Grid container align="center" alignItems="center">
-                <Grid item xs align='center'>
-                    <img src={homeTeam.crestUrl} className='crest' alt="crest" />
-                </Grid>
-                <Grid item xs>
-                    {match.homeTeam.name}
-                </Grid>
-                <Grid item xs>
-                    {match.score.fullTime.homeTeam}
-                </Grid>
-                -
-                <Grid item xs>
-                    {match.score.fullTime.awayTeam}
-                </Grid>
-                <Grid item xs>
-                    {match.awayTeam.name}
-                </Grid>
-                <Grid item xs align='center'>
-                    <img src={awayTeam.crestUrl} className='crest' alt="crest" />
-                </Grid>
-            </Grid>
-            <Divider />
-            </Paper> */}
             <Grid container>
                 <Grid items xs={2} align='left'>
                     <Box fontWeight='fontWeightRegular' fontSize={12}>

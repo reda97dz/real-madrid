@@ -6,8 +6,6 @@ import Subtitle from './Subtitle'
 
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
-import Divider from '@material-ui/core/Divider'
-// import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import { Box } from '@material-ui/core'
 import IconButton from '@material-ui/core/IconButton'
@@ -31,30 +29,15 @@ const useStyles = makeStyles((theme) => ({
 
 const Games = ({upcomingGamesList, finishedGamesList}) => {
   const classes = useStyles()
-  const [numberOfGamesToShow, setNumberOfGamesToShow] = useState(5)
+  const [numberOfGamesToShow, setNumberOfGamesToShow] = useState(4)
   console.log(finishedGamesList)
 
   return (
     <Grid align='center'>
       <Box width={1/2} p={2}>
         <Paper  className={classes.paper} square >
-          
-          {/* <Box bgcolor='primary.main' color='white'>
-            <Typography variant="h3" component="h2" gutterBottom align='center'>
-                Upcoming Games
-            </Typography>
-          </Box> */}
 
           <Header title='Real Madrid 21/22' />
-        
-
-          {/* <Subtitle subtitle='Done Fixtures' />
-
-          <Box>
-            <Paper className={classes.listPaper} elevation={1} square>
-              {finishedGamesList.map(match => <DoneFixture key={match.id} match={match} />)}
-            </Paper>
-          </Box> */}
 
           <Subtitle subtitle='All' />
 
