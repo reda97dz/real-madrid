@@ -26,30 +26,31 @@ const useStyles = makeStyles(theme => ({
     display: "flex"
   },
   drawer: {
-    [theme.breakpoints.up("sm")]: {
-      width: drawerWidth,
-      flexShrink: 0
-    }
+    // [theme.breakpoints.up("sm")]: {
+    //   width: drawerWidth,
+    //   flexShrink: 0
+    // }
   },
   appBar: {
-    marginLeft: drawerWidth,
-    [theme.breakpoints.up("sm")]: {
-      width: `calc(100% - ${drawerWidth}px)`
-    }
+    // marginLeft: drawerWidth,
+    // [theme.breakpoints.up("sm")]: {
+    //   width: `calc(100% - ${drawerWidth}px)`
+    // }
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    [theme.breakpoints.up("sm")]: {
-      display: "none"
-    }
+    // [theme.breakpoints.up("sm")]: {
+    //   display: "none"
+    // }
   },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth
   },
   content: {
+    paddingTop: theme.spacing(9),
     flexGrow: 20,
-    padding: theme.spacing(5)
+    padding: theme.spacing(2)
   }
 }))
 
@@ -125,17 +126,6 @@ const App = (props) => {
               ModalProps={{
                 keepMounted: true // Better open performance on mobile.
               }}
-            >
-              {drawer}
-            </Drawer>
-          </Hidden>
-          <Hidden xsDown implementation="css">
-            <Drawer
-              classes={{
-                paper: classes.drawerPaper
-              }}
-              variant="permanent"
-              open
             >
               {drawer}
             </Drawer>

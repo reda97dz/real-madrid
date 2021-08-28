@@ -16,8 +16,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  paper: {
-    padding: 15,
+  paper : {
+    padding: theme.spacing(2)
   },
   titlePaper: {
     backgroundColor: '#16150f80'
@@ -33,8 +33,9 @@ const Games = ({upcomingGamesList, finishedGamesList}) => {
   console.log(finishedGamesList)
 
   return (
-    <Grid align='center'>
-      <Box width={1/2} p={2}>
+
+    <Grid container >
+      <Grid item xs={12} md={12} lg={12} align='center'>
         <Paper  className={classes.paper} square >
 
           <Header title='Real Madrid 21/22' />
@@ -56,7 +57,7 @@ const Games = ({upcomingGamesList, finishedGamesList}) => {
             </IconButton>
           </Box>
         </Paper>
-        </Box>
+      </Grid>
     </Grid>
   )
 }
