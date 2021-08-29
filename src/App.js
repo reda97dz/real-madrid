@@ -106,7 +106,7 @@ const App = (props) => {
             <MenuIcon/>
           </IconButton>
           <Typography>
-            Responsive Drawer
+            All things Real Madrid
           </Typography>
         </Toolbar>
       </AppBar>

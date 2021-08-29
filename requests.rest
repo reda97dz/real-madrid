@@ -1,0 +1,3 @@
+GET https://api.football-data.org/v2/teams/86/matches?status=SCHEDULED
+Content-Type: application/json
+X-Auth-Token: 3231994280e54acbb604868cca7988a1

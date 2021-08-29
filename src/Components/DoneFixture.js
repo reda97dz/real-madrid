@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
     },
     match : {
         alignSelf : 'center',
-        backgroundColor : 'yellow',
         order : 2,
         direction : 'row'
     },

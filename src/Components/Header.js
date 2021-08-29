@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 const Header = ({title}) => {
     const classes = useStyles()
     return (
-        <Paper className={classes.titlePaper} elevation={1} square>
+        <Paper className={classes.titlePaper} variant='outlined' square>
             <Box p={2} color='#f0e1c5'>
             <Typography variant="h3" component="h2">
                 {title}
