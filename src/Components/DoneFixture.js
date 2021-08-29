@@ -5,53 +5,75 @@ import Divider from '@material-ui/core/Divider'
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 
-
-const theme = createTheme({
+const breakpoints = createTheme({
     breakpoints: {
-        values: {
-          xs: 0,
-          sm: 450,
-          md: 600,
-          lg: 900,
-          xl: 1200
-        }
+      values: {
+        xs: 0,
+        sm: 420,
+        md: 960,
+        lg: 1280,
+        xl: 1920,
+      },
     },
-})
+  })
 
 const useStyles = makeStyles((theme) => ({
     league : {
         order : 1,
-        textAlign : 'left'
+        alignSelf : 'flex-end',
+    },
+    match : {
+        alignSelf : 'center',
+        backgroundColor : 'yellow',
+        order : 2,
+        direction : 'row'
     },
     home : {
-        order : 2,
-        textAlign : 'right'
+        order : 1,
+        textAlign : 'right',
+        [breakpoints.breakpoints.down('xs')]:{
+            textAlign : 'right',
+            paddingRight : 5
+        }
     },
     homeScore : {
-        order : 3
+        order : 2,
+        textAlign: 'center',
+        maxWidth : 25,
+        [breakpoints.breakpoints.down('xs')]:{
+            textAlign : 'center'
+        }
     },
     dash : {
-        order : 4,
-        [theme.breakpoints.down('xs')]:{
+        order : 3,
+        textAlign: 'center',
+        maxWidth : 10,
+        [breakpoints.breakpoints.down('xs')]:{
         display: 'none'
         }
     },
     awayScore : {
-        order : 5,
-        [theme.breakpoints.down('xs')]:{
-        order : 6
+        order : 4,
+        textAlign: 'center',
+        maxWidth : 25,
+        [breakpoints.breakpoints.down('xs')]:{
+            order : 5,
+            textAlign : 'center'
         }
     },
     away : {
-        textAlign : 'left',
-        order : 6,
-        [theme.breakpoints.down('xs')]:{
         order : 5,
-        textAlign : 'right',
+        textAlign : 'left',
+        [breakpoints.breakpoints.down('xs')]:{
+            order : 4,
+            textAlign : 'right',
+            paddingRight : 5
         }
     },
     date : {
-        order : 7
+        alignSelf: 'center',
+        order : 3,
+        padding : 5,
     },
 }));
 
@@ -59,76 +81,44 @@ const DoneFixture = ({match}) => {
     const classes = useStyles()
 
     return(
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={breakpoints}>
             <Box>
-            <Grid container spacing={2}>
-                <Grid item xs={12} sm={2} md={2} lg={2} className={classes.league}>
-                    <Box fontWeight='fontWeightRegular' fontSize={12}>
-                        {match.competition.name}
-                    </Box>
-                </Grid>
-                <Grid item xs={10} sm={3} md={3} lg={3} className={classes.home}>
-                    <Box fontWeight="fontWeightMedium">
-                        {match.homeTeam.name}
-                    </Box>
-                </Grid>
-                <Grid item xs={2} sm={1} md={1} lg={1} className={classes.homeScore}>
-                    {match.score.fullTime.homeTeam}
-                </Grid>
-                <Grid item xs={12} sm={1} md={1} lg={1} className={classes.dash}>
-                    -
-                </Grid>
-                <Grid item xs={2} sm={1} md={1} lg={1} className={classes.awayScore}>
-                    {match.score.fullTime.awayTeam}
-                </Grid>
-                <Grid item xs={10} sm={3} md={3} lg={3} className={classes.away}>
-                    <Box fontWeight="fontWeightMedium">
-                        {match.awayTeam.name}
-                    </Box>
-                </Grid>
-                <Grid item xs={12} sm={1} md={1} lg={1} className={classes.date}>
-                    <Box fontWeight='fontWeightLight'>
-                        FT
-                    </Box>
-                </Grid>
-            </Grid>
-
-            {/* <Grid container>
-                <Grid items xs={1} md={2} lg={2} align='left'  className={classes.competition}>
-                    <Box fontWeight='fontWeightRegular' fontSize={12}>
-                        {match.competition.name}
-                    </Box>
-                </Grid>
-                <Grid item xs container direction='row'>
-                    <Grid item xs  container direction='row' alignItems='center'>
-                        <Grid item xs align='right'>
+                <Grid container style={{padding: 7}}>
+                    <Grid item className={classes.league}>
+                        <Box fontWeight='fontWeightRegular' fontSize={12}>
+                            {match.competition.name}
+                        </Box>
+                    </Grid>
+                    <Grid item container xs className={classes.match} style={{paddingRight: 25}}>
+                        <Grid item xs={11} sm className={classes.home}>
                             <Box fontWeight="fontWeightMedium">
-                            {match.homeTeam.name}
+                                {match.homeTeam.name}
                             </Box>
                         </Grid>
-                        <Grid item xs={1} align='center'>
+                        <Grid item xs={1} sm className={classes.homeScore}>
                             {match.score.fullTime.homeTeam}
                         </Grid>
-                        -
-                        <Grid item xs={1} align='center'>
+                        <Grid item sm className={classes.dash}>
+                            -
+                        </Grid>
+                        <Grid item xs={1} sm className={classes.awayScore}>
                             {match.score.fullTime.awayTeam}
                         </Grid>
-                        <Grid item xs align='left'>
+                        <Grid item xs={11} sm className={classes.away}>
                             <Box fontWeight="fontWeightMedium">
-                            {match.awayTeam.name}
+                                {match.awayTeam.name}
                             </Box>
                         </Grid>
                     </Grid>
-                    <Grid item xs={2} align='center'>
+                    <Grid item className={classes.date}>
                         <Box fontWeight='fontWeightLight'>
                             FT
                         </Box>
                     </Grid>
                 </Grid>
-            </Grid> */}
             <Divider />
         </Box>
-        </ThemeProvider>
+    </ThemeProvider>
     )
 }
 

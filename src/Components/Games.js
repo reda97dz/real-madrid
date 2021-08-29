@@ -17,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper : {
-    padding: theme.spacing(2)
+    padding: theme.spacing(2),
+    maxWidth: 700
   },
   titlePaper: {
     backgroundColor: '#16150f80'
@@ -38,7 +39,7 @@ const Games = ({upcomingGamesList, finishedGamesList}) => {
       <Grid item xs={12} md={12} lg={12} align='center'>
         <Paper  className={classes.paper} square >
 
-          <Header title='Real Madrid 21/22' />
+          <Header title='Scores' />
 
           <Subtitle subtitle='All' />
 
