@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Games from './Components/Games'
 import gameService from './Services/games'
+import standingsService from './Services/standings'
 
 import { Switch, Route, Link, BrowserRouter } from 'react-router-dom'
 import { makeStyles, useTheme } from '@material-ui/core/styles'

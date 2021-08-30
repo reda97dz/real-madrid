@@ -9,7 +9,7 @@ const breakpoints = createTheme({
     breakpoints: {
       values: {
         xs: 0,
-        sm: 420,
+        sm: 570,
         md: 960,
         lg: 1280,
         xl: 1920,
@@ -19,8 +19,14 @@ const breakpoints = createTheme({
 
 const useStyles = makeStyles((theme) => ({
     league : {
+        minWidth : 142,
         order : 1,
         alignSelf : 'flex-end',
+        textAlign : 'left',
+        [breakpoints.breakpoints.down('xs')]:{
+            maxWidth: 65,
+            minWidth:1
+          }
     },
     match : {
         alignSelf : 'center',

@@ -42,13 +42,15 @@ const StyledToggleButtonGroup = withStyles((theme) => ({
 }))(ToggleButtonGroup);
 
 const Games = ({upcomingGamesList, finishedGamesList}) => {
+  console.log(upcomingGamesList)
   const classes = useStyles()
   const [competition, setCompetition] = useState('all')
   const [numberOfGamesToShow, setNumberOfGamesToShow] = useState(4)
   const [upcomingGamesToShow, setUpcomingGamesToShow] = useState(upcomingGamesList)
   const [finishedGamesToShow, setFinishedGamesToShow] = useState(finishedGamesList)
-  // console.log(finishedGamesList)
+  console.log(finishedGamesToShow)
   const handleCompetition = (event, newCompetition) => {
+    
     setCompetition(newCompetition)
     switch (newCompetition) {
       case 'all':
@@ -60,8 +62,8 @@ const Games = ({upcomingGamesList, finishedGamesList}) => {
         setUpcomingGamesToShow(upcomingGamesList.filter(match => match.competition.name === 'Primera Division'))
         break
       case 'ucl':
-        setFinishedGamesToShow(finishedGamesList.filter(match => match.competition.name === 'UEFA Chamption League'))
-        setUpcomingGamesToShow(upcomingGamesList.filter(match => match.competition.name === 'UEFA Chamption League'))
+        setFinishedGamesToShow(finishedGamesList.filter(match => match.competition.name === 'UEFA Champions League'))
+        setUpcomingGamesToShow(upcomingGamesList.filter(match => match.competition.name === 'UEFA Champions League'))
         break
       default:
         break
@@ -69,8 +71,8 @@ const Games = ({upcomingGamesList, finishedGamesList}) => {
   }
   return (
 
-    <Grid container >
-      <Grid item xs={12} md={12} lg={12} align='center'>
+    <Grid container>
+      <Grid item xs={12} lg={6} align='center'>
         <Paper  className={classes.paper} variant='outlined' square >
 
           {/* <Header title='Scores' /> */}
@@ -90,7 +92,7 @@ const Games = ({upcomingGamesList, finishedGamesList}) => {
           <Box>
             <Paper className={classes.listPaper} elevation={0} square>
               {finishedGamesToShow.map(match => <DoneFixture key={match.id} match={match} />)}
-              {upcomingGamesToShow.slice(0, numberOfGamesToShow).map(match => <Fixture key={match.id} match={match} />)}
+              {/* {upcomingGamesToShow.slice(0, numberOfGamesToShow).map(match => <Fixture key={match.id} match={match} />)} */}
             </Paper>
           </Box>
           <Box textAlign='center'>
@@ -101,6 +103,12 @@ const Games = ({upcomingGamesList, finishedGamesList}) => {
               <KeyboardArrowUpIcon fontSize="inherit" />
             </IconButton>
           </Box>
+        </Paper>
+      </Grid>
+
+      <Grid item xs={12} lg={6} align='center'>
+        <Paper className={classes.paper} variant='outlined' square>
+          Standing
         </Paper>
       </Grid>
     </Grid>
