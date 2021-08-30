@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import Games from './Components/Games'
+// import Games from './Components/Games'
 import gameService from './Services/games'
+import MainContent from './Components/MainContent'
+// import standingsService from './Services/standings'
 
 import { Switch, Route, Link, BrowserRouter } from 'react-router-dom'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
@@ -106,7 +108,7 @@ const App = (props) => {
             <MenuIcon/>
           </IconButton>
           <Typography>
-            Responsive Drawer
+            All things Real Madrid
           </Typography>
         </Toolbar>
       </AppBar>
@@ -134,7 +136,7 @@ const App = (props) => {
         <main className={classes.content}>
           <div className={classes.toolbar}>
             <Switch>
-              <Route exact path="/" render={() => <Games upcomingGamesList={upcomingGamesList} finishedGamesList={finishedGamesList} />} />
+              <Route exact path="/" render={() => <MainContent />} />
               <Route path="/Inbox" render={() => <div> Page inbox</div>}/>
               <Route path="/Starred" render={() => <div>Page starred</div>}/>
             </Switch>
