@@ -3,6 +3,8 @@ import Grid from '@material-ui/core/Grid'
 
 import { makeStyles} from '@material-ui/core/styles'
 
+import TableRow from '@material-ui/core/TableRow'
+import TableCell from '@material-ui/core/TableCell'
 
 // const breakpoints = createTheme({
 //     breakpoints: {
@@ -17,7 +19,9 @@ import { makeStyles} from '@material-ui/core/styles'
 // })
 
 const useStyles = makeStyles((theme) => ({
-    thead : {
+    tName : {
+        textAlign : 'left',
+        minWidth : 170
     }
 }));
 
@@ -25,17 +29,30 @@ const useStyles = makeStyles((theme) => ({
 const TeamStanding = ({team}) => {
     const classes = useStyles()
     return (
-        <Grid container className={classes.tHead}>
-            <Grid item xs>{team.position}</Grid>
-            <Grid item xs></Grid>
-            <Grid item xs={5} style={{textAlign: 'left'}}>{team.team.name}</Grid>
-            <Grid item xs>{team.playedGames}</Grid>
-            <Grid item xs>{team.won}</Grid>
-            <Grid item xs>{team.draw}</Grid>
-            <Grid item xs>{team.lost}</Grid>
-            <Grid item xs>{team.goalDifference}</Grid>
-            <Grid item xs>{team.points}</Grid>
-        </Grid>
+
+        <TableRow>
+            <TableCell>{team.position}</TableCell>
+            <TableCell></TableCell>
+            <TableCell>{team.team.name}</TableCell>
+            <TableCell>{team.playedGames}</TableCell>
+            <TableCell>{team.won}</TableCell>
+            <TableCell>{team.draw}</TableCell>
+            <TableCell>{team.lost}</TableCell>
+            <TableCell>{team.goalDifference}</TableCell>
+            <TableCell>{team.points}</TableCell>
+        </TableRow>
+
+        // <Grid container>
+        //     <Grid item xs style={{minWidth:30}}>{team.position}</Grid>
+        //     <Grid item xs></Grid>
+        //     <Grid item xs={5} className={classes.tName}>{team.team.name}</Grid>
+        //     <Grid item xs>{team.playedGames}</Grid>
+        //     <Grid item xs>{team.won}</Grid>
+        //     <Grid item xs>{team.draw}</Grid>
+        //     <Grid item xs>{team.lost}</Grid>
+        //     <Grid item xs>{team.goalDifference}</Grid>
+        //     <Grid item xs>{team.points}</Grid>
+        // </Grid>
     )
 }
 
