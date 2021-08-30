@@ -15,7 +15,7 @@ const breakpoints = createTheme({
         xl: 1920,
       },
     },
-  })
+})
 
 const useStyles = makeStyles((theme) => ({
     league : {
@@ -70,9 +70,10 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     date : {
+        paddingLeft : theme.spacing(2.2),
         alignSelf: 'center',
         order : 3,
-        padding : 5,
+        padding : 5
     },
 }));
 

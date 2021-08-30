@@ -1,0 +1,3 @@
+GET https://api.football-data.org/v2/teams/86
+Content-Type: application/jso
+X-Auth-Token: 3231994280e54acbb604868cca7988a1

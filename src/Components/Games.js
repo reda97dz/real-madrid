@@ -53,12 +53,15 @@ const Games = ({upcomingGamesList, finishedGamesList}) => {
     switch (newCompetition) {
       case 'all':
         setFinishedGamesToShow(finishedGamesList)
+        setUpcomingGamesToShow(upcomingGamesList)
         break
       case 'league':
         setFinishedGamesToShow(finishedGamesList.filter(match => match.competition.name === 'Primera Division'))
+        setUpcomingGamesToShow(upcomingGamesList.filter(match => match.competition.name === 'Primera Division'))
         break
       case 'ucl':
         setFinishedGamesToShow(finishedGamesList.filter(match => match.competition.name === 'UEFA Chamption League'))
+        setUpcomingGamesToShow(upcomingGamesList.filter(match => match.competition.name === 'UEFA Chamption League'))
         break
       default:
         break
@@ -70,7 +73,7 @@ const Games = ({upcomingGamesList, finishedGamesList}) => {
       <Grid item xs={12} md={12} lg={12} align='center'>
         <Paper  className={classes.paper} variant='outlined' square >
 
-          <Header title='Scores' />
+          {/* <Header title='Scores' /> */}
 
           <StyledToggleButtonGroup exclusive value={competition} onChange={handleCompetition}>
             <ToggleButton value='all'>
@@ -87,7 +90,7 @@ const Games = ({upcomingGamesList, finishedGamesList}) => {
           <Box>
             <Paper className={classes.listPaper} elevation={0} square>
               {finishedGamesToShow.map(match => <DoneFixture key={match.id} match={match} />)}
-              {/* {upcomingGamesList.slice(0, numberOfGamesToShow).map(match => <Fixture key={match.id} match={match} />)} */}
+              {upcomingGamesToShow.slice(0, numberOfGamesToShow).map(match => <Fixture key={match.id} match={match} />)}
             </Paper>
           </Box>
           <Box textAlign='center'>
