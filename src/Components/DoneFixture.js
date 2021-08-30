@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import { Box } from '@material-ui/core'
 import Divider from '@material-ui/core/Divider'
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
+// import Paper from '@material-ui/core/Paper'
 
 const breakpoints = createTheme({
     breakpoints: {
