@@ -80,7 +80,7 @@ const Games = () => {
     <Paper  className={classes.paper} variant='outlined' square >
 
       <Typography variant='button' component='h2' style={{fontSize:18}}>
-          Real Madrid Fixtures and Results
+          Fixtures and Results
       </Typography>
 
       <StyledToggleButtonGroup exclusive value={competition} onChange={handleCompetition}>
