@@ -11,7 +11,7 @@ const leagueStanding = async () => {
 const uclStanding = async () => {
     const request = axios.get(baseUrl+'2001/standings',  {headers : {'X-Auth-Token' : '3231994280e54acbb604868cca7988a1'}})
     const response = await request
-    return response.data.standings.table
+    return response.data.standings[3]
 }
 
 const standingsService = {leagueStanding, uclStanding}

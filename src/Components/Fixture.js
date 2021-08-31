@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
       alignItems : 'center',
       paddingRight : 25,
       [breakpoints.breakpoints.down('xs')]:{
-        paddingRight : 16
+        paddingRight : 0
       }
   },
   home : {
@@ -85,7 +85,8 @@ const useStyles = makeStyles((theme) => ({
   date : {
       alignSelf: 'center',
       order : 3,
-      padding : 5
+      padding : 5,
+      minWidth : 50
   },
 }))
 

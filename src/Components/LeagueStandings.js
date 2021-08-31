@@ -1,11 +1,16 @@
 import React, {useState, useEffect} from 'react'
 import Paper from '@material-ui/core/Paper'
 import TeamStanding from './TeamStanding'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles , withStyles } from '@material-ui/core/styles'
 import standingService from '../Services/standings'
-import Grid from '@material-ui/core/Grid'
-import { Divider } from '@material-ui/core'
+import Divider from '@material-ui/core/Divider'
+import Typography from '@material-ui/core/Typography'
+import Hidden from '@material-ui/core/Hidden'
 
+import { Box } from '@material-ui/core'
+import IconButton from '@material-ui/core/IconButton'
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -14,60 +19,100 @@ import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 
+const StyledTableCell = withStyles((theme) => ({
+    head: {
+      backgroundColor: theme.palette.common.black,
+      color: theme.palette.common.white,
+    },
+    body: {
+      fontSize: 14,
+    },
+}))(TableCell);
+
 const useStyles = makeStyles((theme) => ({
     paper : {
         maxWidth: 700,
-        minWidth : 210
+        minWidth : 210,
+        padding: theme.spacing(2)
     },
     table : {
-        maxWidth: 690
+        maxWidth: 700
     }
 }));
 
 const LeagueStandings = () => {
     const classes = useStyles()
     const [standing, setStanding] = useState([])
+    const [uclStanding, setUclStanding] = useState([])
+    const [rowsToShow, setRowsToShow] = useState(5)
 
     const hook = () => {
         standingService.leagueStanding().then(table => setStanding(table.table))
+        standingService.uclStanding().then(table => setUclStanding(table.table))
     }
     useEffect(hook, [])
 
     return (
         <Paper className={classes.paper} variant='outlined' square>
-            STANDING
+
+            <Typography variant='button' component='h2' style={{fontSize:18}}>
+                Primera Division Standings
+            </Typography>
+            
             <TableContainer>
-                <Table className={classes.table}>
+                <Table className={classes.table} size='small'>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Pos</TableCell>
-                            <TableCell></TableCell>
-                            <TableCell>Team</TableCell>
-                            <TableCell>P</TableCell>
-                            <TableCell>W</TableCell>
-                            <TableCell>D</TableCell>
-                            <TableCell>L</TableCell>
-                            <TableCell>+/-</TableCell>
-                            <TableCell>Pts</TableCell>
+                            <StyledTableCell align='center'>Pos</StyledTableCell>
+                            <StyledTableCell align='left'>Team</StyledTableCell>
+                            <StyledTableCell align='center'>P</StyledTableCell>
+                            <Hidden xsDown>
+                                <StyledTableCell align='center'>W</StyledTableCell>
+                                <StyledTableCell align='center'>D</StyledTableCell>
+                                <StyledTableCell align='center'>L</StyledTableCell>
+                            </Hidden>
+                            <StyledTableCell align='center'>Pts</StyledTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {standing.map(team => <TeamStanding key={team.team.id} team={team} />)}
+                        {standing.slice(0,rowsToShow).map(team => <TeamStanding key={team.team.id} team={team} />)}
                     </TableBody>
                 </Table>
             </TableContainer>
-            {/* <Grid container className={classes.tHead}>
-                <Grid item xs style={{minWidth:30}}>Pos</Grid>
-                <Grid item xs></Grid>
-                <Grid item xs={5} style={{textAlign: 'left', minWidth: 170}}>Team</Grid>
-                <Grid item xs>P</Grid>
-                <Grid item xs>W</Grid>
-                <Grid item xs>D</Grid>
-                <Grid item xs>L</Grid>
-                <Grid item xs>+/-</Grid>
-                <Grid item xs>PTS</Grid>
-            </Grid>
-            {standing.map(team => <TeamStanding key={team.team.id} team={team} />)} */}
+            <Box textAlign='center'>
+                <IconButton aria-label="show more" onClick={()=>{setRowsToShow(rowsToShow+5)}} >
+                    <KeyboardArrowDownIcon fontSize="inherit" />
+                </IconButton>
+                <IconButton aria-label="show less" onClick={()=>{setRowsToShow(5)}} >
+                    <KeyboardArrowUpIcon fontSize="inherit" />
+                </IconButton>
+            </Box>
+
+            <Divider/>
+
+            <Typography variant='button' component='h2' style={{fontSize:18}}>
+                UCL Standings
+            </Typography>
+            <TableContainer>
+                <Table className={classes.table} size='small'>
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell align='center'>Pos</StyledTableCell>
+                            <StyledTableCell align='left'>Team</StyledTableCell>
+                            <StyledTableCell align='center'>P</StyledTableCell>
+                            <Hidden xsDown>
+                                <StyledTableCell align='center'>W</StyledTableCell>
+                                <StyledTableCell align='center'>D</StyledTableCell>
+                                <StyledTableCell align='center'>L</StyledTableCell>
+                            </Hidden>
+                            <StyledTableCell align='center'>Pts</StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {uclStanding.map(team => <TeamStanding key={team.team.id} team={team} />)}
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </Paper>
     )
 }

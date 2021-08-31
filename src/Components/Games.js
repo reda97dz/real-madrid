@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import DoneFixture from './DoneFixture'
-// import Fixture from './Fixture'
+import Fixture from './Fixture'
 // import Header from './Header'
 // import Subtitle from './Subtitle'
 import gameService from '../Services/games'
@@ -8,6 +8,7 @@ import gameService from '../Services/games'
 import Paper from '@material-ui/core/Paper'
 
 import { makeStyles, withStyles  } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
 import { Box } from '@material-ui/core'
 import IconButton from '@material-ui/core/IconButton'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
@@ -78,7 +79,9 @@ const Games = () => {
   return (
     <Paper  className={classes.paper} variant='outlined' square >
 
-      {/* <Header title='Scores' /> */}
+      <Typography variant='button' component='h2' style={{fontSize:18}}>
+          Real Madrid Fixtures and Results
+      </Typography>
 
       <StyledToggleButtonGroup exclusive value={competition} onChange={handleCompetition}>
         <ToggleButton value='all'>
@@ -95,7 +98,7 @@ const Games = () => {
       <Box>
         <Paper className={classes.listPaper} elevation={0} square>
           {finishedGamesToShow.map(match => <DoneFixture key={match.id} match={match} />)}
-          {/* {upcomingGamesToShow.slice(0, numberOfGamesToShow).map(match => <Fixture key={match.id} match={match} />)} */}
+          {upcomingGamesToShow.slice(0, numberOfGamesToShow).map(match => <Fixture key={match.id} match={match} />)}
         </Paper>
       </Box>
       <Box textAlign='center'>

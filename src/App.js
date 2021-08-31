@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 // import Games from './Components/Games'
 import gameService from './Services/games'
 import MainContent from './Components/MainContent'
+import Squad from './Components/Squad'
 // import standingsService from './Services/standings'
 
 import { Switch, Route, Link, BrowserRouter } from 'react-router-dom'
@@ -81,7 +82,7 @@ const App = (props) => {
       <div className={classes.toolbar}>
         <Divider />
         <List>
-          {['inbox', 'starred'].map((text, index)=>(
+          {['Squad', 'starred'].map((text, index)=>(
             <ListItem key={text} component={Link} to={'/'+text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -137,7 +138,7 @@ const App = (props) => {
           <div className={classes.toolbar}>
             <Switch>
               <Route exact path="/" render={() => <MainContent />} />
-              <Route path="/Inbox" render={() => <div> Page inbox</div>}/>
+              <Route path="/Squad" render={() => <Squad /> } />
               <Route path="/Starred" render={() => <div>Page starred</div>}/>
             </Switch>
           </div>
