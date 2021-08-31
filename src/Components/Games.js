@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import DoneFixture from './DoneFixture'
-// import Fixture from './Fixture'
+import Fixture from './Fixture'
 // import Header from './Header'
 // import Subtitle from './Subtitle'
 import gameService from '../Services/games'
@@ -98,7 +98,7 @@ const Games = () => {
       <Box>
         <Paper className={classes.listPaper} elevation={0} square>
           {finishedGamesToShow.map(match => <DoneFixture key={match.id} match={match} />)}
-          {/* {upcomingGamesToShow.slice(0, numberOfGamesToShow).map(match => <Fixture key={match.id} match={match} />)} */}
+          {upcomingGamesToShow.slice(0, numberOfGamesToShow).map(match => <Fixture key={match.id} match={match} />)}
         </Paper>
       </Box>
       <Box textAlign='center'>

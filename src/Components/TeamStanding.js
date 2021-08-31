@@ -49,7 +49,7 @@ const TeamStanding = ({team}) => {
     const classes = useStyles()
     return (
 
-        <StyledTableRow>
+        <TableRow>
             <StyledTableCell align='center'>{team.position}</StyledTableCell>
             <StyledTableCell align='left'>{team.team.name}</StyledTableCell>
             <StyledTableCell align='center'>{team.playedGames}</StyledTableCell>
@@ -59,7 +59,7 @@ const TeamStanding = ({team}) => {
                 <StyledTableCell align='center'>{team.lost}</StyledTableCell>    
             </Hidden>
             <StyledTableCell align='center'>{team.points}</StyledTableCell>
-        </StyledTableRow>
+        </TableRow>
 
         // <Grid container>
         //     <Grid item xs style={{minWidth:30}}>{team.position}</Grid>
