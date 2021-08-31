@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
     league : {
-        maxHeight : '100vh',
+        // maxHeight : '100vh',
         overflow : 'auto'
     }
 }))
@@ -18,11 +18,11 @@ const useStyles = makeStyles((theme) => ({
 const MainContent = () => {
     const classes = useStyles()
     return (
-        <Grid container >
+        <Grid container spacing={1}>
             <Grid item xs={12} lg={6} align='center'>
-                {/* <Games /> */}
+                <Games />
             </Grid>
-            <Grid item xs={12} lg={12} align='center' className={classes.league}>
+            <Grid item xs={12} lg={6} align='center' className={classes.league}>
                 <LeagueStandings />
             </Grid>
         </Grid>

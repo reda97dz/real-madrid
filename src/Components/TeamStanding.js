@@ -1,7 +1,8 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
 
-import { makeStyles} from '@material-ui/core/styles'
+import { makeStyles , withStyles} from '@material-ui/core/styles'
+import Hidden from '@material-ui/core/Hidden'
 
 import TableRow from '@material-ui/core/TableRow'
 import TableCell from '@material-ui/core/TableCell'
@@ -18,6 +19,24 @@ import TableCell from '@material-ui/core/TableCell'
 //     },
 // })
 
+const StyledTableCell = withStyles((theme) => ({
+    head: {
+      backgroundColor: theme.palette.common.black,
+      color: theme.palette.common.white,
+    },
+    body: {
+      fontSize: 14,
+    },
+}))(TableCell);
+  
+const StyledTableRow = withStyles((theme) => ({
+    root: {
+      '&:nth-of-type(odd)': {
+        backgroundColor: theme.palette.action.hover,
+      },
+    },
+}))(TableRow);
+
 const useStyles = makeStyles((theme) => ({
     tName : {
         textAlign : 'left',
@@ -30,17 +49,17 @@ const TeamStanding = ({team}) => {
     const classes = useStyles()
     return (
 
-        <TableRow>
-            <TableCell>{team.position}</TableCell>
-            <TableCell></TableCell>
-            <TableCell>{team.team.name}</TableCell>
-            <TableCell>{team.playedGames}</TableCell>
-            <TableCell>{team.won}</TableCell>
-            <TableCell>{team.draw}</TableCell>
-            <TableCell>{team.lost}</TableCell>
-            <TableCell>{team.goalDifference}</TableCell>
-            <TableCell>{team.points}</TableCell>
-        </TableRow>
+        <StyledTableRow>
+            <StyledTableCell align='center'>{team.position}</StyledTableCell>
+            <StyledTableCell align='left'>{team.team.name}</StyledTableCell>
+            <StyledTableCell align='center'>{team.playedGames}</StyledTableCell>
+            <Hidden xsDown>
+                <StyledTableCell align='center'>{team.won}</StyledTableCell>
+                <StyledTableCell align='center'>{team.draw}</StyledTableCell>
+                <StyledTableCell align='center'>{team.lost}</StyledTableCell>    
+            </Hidden>
+            <StyledTableCell align='center'>{team.points}</StyledTableCell>
+        </StyledTableRow>
 
         // <Grid container>
         //     <Grid item xs style={{minWidth:30}}>{team.position}</Grid>
