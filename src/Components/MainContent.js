@@ -1,9 +1,6 @@
 import React from 'react'
 import Games from './Games'
 import LeagueStandings from './LeagueStandings'
-// import gameService from './Services/games'
-// import standingsService from './Services/standings'
-// import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 

@@ -46,7 +46,9 @@ const Games = () => {
 
   const hook = () => {
     gameService.upcomingGames().then(games => setUpcomingGamesList(games))
+    console.log('API Call')
     gameService.finishedGames().then(games => setFinishedGamesList(games))
+    console.log('API Call')
   }
   useEffect(hook, [])
 
@@ -55,7 +57,6 @@ const Games = () => {
   const [numberOfGamesToShow, setNumberOfGamesToShow] = useState(4)
   const [upcomingGamesToShow, setUpcomingGamesToShow] = useState(upcomingGamesList)
   const [finishedGamesToShow, setFinishedGamesToShow] = useState(finishedGamesList)
-  console.log(finishedGamesToShow)
   const handleCompetition = (event, newCompetition) => {
     
     setCompetition(newCompetition)

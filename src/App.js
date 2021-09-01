@@ -28,24 +28,24 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"
   },
-  drawer: {
-    // [theme.breakpoints.up("sm")]: {
-    //   width: drawerWidth,
-    //   flexShrink: 0
-    // }
-  },
-  appBar: {
-    // marginLeft: drawerWidth,
-    // [theme.breakpoints.up("sm")]: {
-    //   width: `calc(100% - ${drawerWidth}px)`
-    // }
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-    // [theme.breakpoints.up("sm")]: {
-    //   display: "none"
-    // }
-  },
+  // drawer: {
+  //   // [theme.breakpoints.up("sm")]: {
+  //   //   width: drawerWidth,
+  //   //   flexShrink: 0
+  //   // }
+  // },
+  // appBar: {
+  //   // marginLeft: drawerWidth,
+  //   // [theme.breakpoints.up("sm")]: {
+  //   //   width: `calc(100% - ${drawerWidth}px)`
+  //   // }
+  // },
+  // menuButton: {
+  //   marginRight: theme.spacing(2),
+  //   // [theme.breakpoints.up("sm")]: {
+  //   //   display: "none"
+  //   // }
+  // },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth
@@ -58,14 +58,14 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const App = (props) => {
-  const [upcomingGamesList, setUpcomingGamesList] = useState([])
-  const [finishedGamesList, setFinishedGamesList] = useState([])
+  // const [upcomingGamesList, setUpcomingGamesList] = useState([])
+  // const [finishedGamesList, setFinishedGamesList] = useState([])
 
-  const hook = () => {
-    gameService.upcomingGames().then(games => setUpcomingGamesList(games))
-    gameService.finishedGames().then(games => setFinishedGamesList(games))
-  }
-  useEffect(hook, [])
+  // const hook = () => {
+  //   gameService.upcomingGames().then(games => setUpcomingGamesList(games))
+  //   gameService.finishedGames().then(games => setFinishedGamesList(games))
+  // }
+  // useEffect(hook, [])
 
   const classes = useStyles();
   
@@ -82,11 +82,8 @@ const App = (props) => {
       <div className={classes.toolbar}>
         <Divider />
         <List>
-          {['Squad', 'starred'].map((text, index)=>(
+          {['Squad'].map((text, index)=>(
             <ListItem key={text} component={Link} to={'/'+text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}

@@ -7,9 +7,9 @@ import React, {useState, useEffect} from 'react'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
-import Card from '@material-ui/core/Card'
 import { makeStyles } from '@material-ui/core/styles'
 
+import Players from './Players'
 import squad from '../Services/squad'
 
 
@@ -26,6 +26,7 @@ const Squad = () => {
 
     const hook = () => {
         squad().then(players => setPlayersList(players))
+        console.log('API Call')
     }
     useEffect(hook, [])
     const goalKeepers = playersList.filter(player => player.position==='Goalkeeper')
@@ -36,119 +37,24 @@ const Squad = () => {
     const classes = useStyles()
 
     return (
+        <Grid container xs={12} justify='center'>
+            <Paper variant='outlined' square component={Grid} item className={classes.paper}>
+                <Typography variant='button' component='h2' style={{fontSize:18, textAlign:'center'}}>
+                    Real Madrid Squad
+                </Typography>
 
-
-        <Paper variant='outlined' square className={classes.paper}>
-            <Typography variant='button' component='h2' style={{fontSize:18}}>
-                Real Madrid Squad
-            </Typography>
-
-            <Grid container>
-                <Grid item container xs={12} sm direction='column'>
-
-
-                    <Grid item container direction='column'>
-                        <Grid item>
-                            <Paper style={{backgroundColor: 'black', color: 'white'}} square elevation={0}>
-                                <Typography variant='button' component='h5'>Keepers</Typography>
-                            </Paper>
-                        </Grid>
-                        <Paper item container xs component={Grid} variant='outlined' square>
-                            <Grid item xs={12} sm={6} >
-                                {goalKeepers.map(player => 
-                                    <Card square container variant='outlined' component={Grid}>
-                                        <Grid item xs={8}>{player.name}</Grid>
-                                        <Grid item xs>{player.shirtNumber
-                                        }</Grid>
-                                    </Card>
-                                )}
-                            </Grid>
-                        </Paper>
+                <Grid container>
+                    <Grid item container xs={12} sm direction='column'>
+                        <Players title='Goalkeepers' playersList={goalKeepers} />
+                        <Players title='Defenders' playersList={defenders} />
                     </Grid>
-
-                    <Grid item container direction='column'>
-                        <Grid item>
-                            <Paper style={{backgroundColor: 'black', color: 'white'}} square elevation={0}>
-                                <Typography variant='button' component='h5'>Defenders</Typography>
-                            </Paper>
-                        </Grid>
-                        <Paper item container xs component={Grid} variant='outlined' square>
-                            <Grid item xs={12} sm={6} >
-                                {defenders.map(player => 
-                                    <Card square container variant='outlined' component={Grid}>
-                                        <Grid item xs={8}>{player.name}</Grid>
-                                        <Grid item xs>{player.shirtNumber
-                                        }</Grid>
-                                    </Card>
-                                )}
-                            </Grid>
-                        </Paper>
+                    <Grid item container xs={12} sm direction='column'>
+                        <Players title='Midfielders' playersList={midfielders} />
+                        <Players title='Attackers' playersList={forwards} />
                     </Grid>
-
                 </Grid>
-                <Grid item container xs={12} sm direction='column'>
-                    
-                    <Grid item container direction='column'>
-                        <Grid item>
-                            <Paper style={{backgroundColor: 'black', color: 'white'}} square elevation={0}>
-                                <Typography variant='button' component='h5'>Midfielders</Typography>
-                            </Paper>
-                        </Grid>
-                        <Paper item container xs component={Grid} variant='outlined' square>
-                            <Grid item xs={12} sm={6} >
-                                {midfielders.map(player => 
-                                    <Card square container variant='outlined' component={Grid}>
-                                        <Grid item xs={8}>{player.name}</Grid>
-                                        <Grid item xs>{player.shirtNumber
-                                        }</Grid>
-                                    </Card>
-                                )}
-                            </Grid>
-                        </Paper>
-                    </Grid>
-                    
-                    <Grid item container direction='column'>
-                        <Grid item>
-                            <Paper style={{backgroundColor: 'black', color: 'white'}} square elevation={0}>
-                                <Typography variant='button' component='h5'>Attackers</Typography>
-                            </Paper>
-                        </Grid>
-                        <Paper item container xs component={Grid} variant='outlined' square>
-                            <Grid item xs={12} sm={6} >
-                                {forwards.map(player => 
-                                    <Card square container variant='outlined' component={Grid}>
-                                        <Grid item xs={8}>{player.name}</Grid>
-                                        <Grid item xs>{player.shirtNumber
-                                        }</Grid>
-                                    </Card>
-                                )}
-                            </Grid>
-                        </Paper>
-                    </Grid>
-
-                </Grid>
-            </Grid>
-            
-            
-            
-        </Paper>
-        // {goalKeepers.map(player => 
-        //         <div>
-        //             {player.name}
-        //         </div>
-        // )}
-        // <div>
-        //     Keepers
-        //     {goalKeepers.map(player => <div>{player.name}</div> )}
-        //     Defenders
-        //     {defenders.map(player => <div>{player.name}</div>)}
-        //     Midfielders
-        //     {midfielders.map(player => <div>{player.name}</div>)}
-        //     Forwards
-        //     {forwards.map(player => <div>{player.name}</div>)}
-
-        // </div>
-
+            </Paper>
+        </Grid>
     )
 }
 

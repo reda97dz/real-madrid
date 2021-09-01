@@ -48,7 +48,9 @@ const LeagueStandings = () => {
 
     const hook = () => {
         standingService.leagueStanding().then(table => setStanding(table.table))
+        console.log('API Call')
         standingService.uclStanding().then(table => setUclStanding(table.table))
+        console.log('API Call')
     }
     useEffect(hook, [])
 

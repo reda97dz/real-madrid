@@ -102,9 +102,11 @@ const Fixture = ({ match }) => {
 
   useEffect(() => {
     gameService.teamDetails(match.homeTeam.id).then(team => {
+      console.log('API Call')
       setHomeTeam(team)
     })
     gameService.teamDetails(match.awayTeam.id).then(team => {
+      console.log('API Call')
       setAwayTeam(team)
     })
   }, [])
