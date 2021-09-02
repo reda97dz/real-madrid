@@ -10,6 +10,7 @@ A Real Madrid website with responsive design built with React.js consuming the f
 
 ## Limitations
 * 10 API calls per minute
+* it can be too long before the API is updated
 
 ## To-do for furthur improvement
 - [ ] expand the applicationt to support more teams
