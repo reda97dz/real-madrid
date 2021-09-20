@@ -14,7 +14,7 @@ A Real Madrid website with responsive design built with React.js consuming the f
 
 ## To-do for furthur improvement
 - [ ] expand the applicationt to support more teams
-- [ ] figure out a way to make less API calls
+- [ ] use context-api
 
 ## Demo
 
